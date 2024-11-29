@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2V3RWIH3yux3l2djHSYj6omoJpKAwUuRPpuDs/uMaBM=",
+  "Hash": "PkD44Hg/wJodpyV6pERunHofXADzysPaoiKq0DueXBs=",
   "Source": "TasksWebApp",
   "BasePath": "_content/TasksWebApp",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "TasksWebApp\\wwwroot",
       "Source": "TasksWebApp",
-      "ContentRoot": "C:\\Users\\angel\\Documents\\C-Sharp\\tasks\\TasksWebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\TasksWebApp\\wwwroot\\",
       "BasePath": "_content/TasksWebApp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\angel\\Documents\\C-Sharp\\tasks\\TasksWebApp\\wwwroot\\styles\\style.css",
+      "Identity": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\TasksWebApp\\wwwroot\\styles\\style.css",
       "SourceId": "TasksWebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\angel\\Documents\\C-Sharp\\tasks\\TasksWebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\TasksWebApp\\wwwroot\\",
       "BasePath": "_content/TasksWebApp",
       "RelativePath": "styles/style.css",
       "AssetKind": "All",

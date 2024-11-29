@@ -13,11 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tasks.EntityModels")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< Updated upstream
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c76f85e2da7a1ed333bed26b20f2354993869ae2")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d4727043ccf7f916b0fe7862b5bc89917d1387f")]
->>>>>>> Stashed changes
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93ce929fe0e42addb768a4c760d298e744b48e60")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tasks.EntityModels")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tasks.EntityModels")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

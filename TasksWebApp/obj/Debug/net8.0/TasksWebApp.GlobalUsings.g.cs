@@ -15,7 +15,4 @@ global using global::System.Net.Http;
 global using global::System.Net.Http.Json;
 global using global::System.Threading;
 global using global::System.Threading.Tasks;
-<<<<<<< Updated upstream
-=======
 global using static global::System.Console;
->>>>>>> Stashed changes

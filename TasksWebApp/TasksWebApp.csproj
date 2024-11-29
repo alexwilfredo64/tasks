@@ -10,11 +10,10 @@
     <ProjectReference Include="..\Tasks.DataContext\Tasks.DataContext.csproj" />
   </ItemGroup>
 
-<<<<<<< Updated upstream
-=======
+
   <ItemGroup>
     <Using Include="System.Console" Static="true"/>
   </ItemGroup>
 
->>>>>>> Stashed changes
+
 </Project>

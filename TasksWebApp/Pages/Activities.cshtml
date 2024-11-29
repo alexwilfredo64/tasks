@@ -1,0 +1,121 @@
+@page
+@using Tasks.EntityModels
+
+@model Tasks.Web.Pages.ActivitiesModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+  <style>
+    
+    input{
+            
+        }
+       
+        .row{
+            float: left;
+            height: 400px;
+            max-height: 400px; 
+            overflow: auto;
+
+           
+                    max-width:800px;  /* El div no se estirará más allá de 1200px */
+                    margin: 0 auto;  /* Centra el div horizontalmente */
+                    margin-top: 200px;
+                    margin-left: 5%;
+                    border: 3px solid black; /* Borde negro, sólido, de 3px de grosor */
+                    /*margin-right: 0px;*/
+                  
+        }
+        .fecha{
+            float:right;
+            width: 100%;  /* El div ocupará el 100% del ancho disponible */
+                    max-width: 144px;  /* El div no se estirará más allá de 1200px */
+                    border: 3px solid black; /* Borde negro, sólido, de 3px de grosor */
+                    margin-top: 200px;
+                    margin-left: 0%;
+                    
+                  
+        }
+        .container{
+            
+            max-width: 1000px;  /* El div no se estirará más allá de 1200px */
+            margin: 0 auto;
+            margin-left:10% ;
+        }
+        .añadir{
+            float:left;
+            margin-left: 20%;
+            margin-top:50px;
+            width: 100%;  /* El div ocupará el 100% del ancho disponible */
+           
+
+        }
+        
+        </style>
+<div class="container">
+
+<div class="row">
+ 
+  <table class="table">
+    <thead class="thead-inverse" style="position: sticky; top: 0">
+        
+      <tr >
+         <h1 >Actividades</h1>
+        <th>Eliminar</th>
+        <th>Fecha</th>
+        <th>Actividad</th>
+        <th>detalles</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+        
+        <div class="activities">
+
+      @if (Model.Activities is not null)
+      {
+        @foreach (Activity a in Model.Activities)
+        {
+            string date =a.Date.ToString("dd/MM/yyyy");
+          <tr>
+            <td><input type="submit" value="eliminar"></td>
+            <td>@date</td>
+            <td>@a.ActivityName</td>
+            <td><input type="submit" value="ver detalles"></td>
+          </tr>
+        }
+      }
+        </div>
+    </tbody>
+    </table>
+   
+</div>
+<div class="fecha">
+ <form  method="POST" >
+      <input type="date" id="fecha" name="fecha" onchange="this.form.submit()" required>
+    </form>
+  
+</div>
+
+</div>
+<div class="añadir">
+        <form action=""method="post">    
+            <input type="text"asp-for="Activity!.ActivityName"><input type="date"asp-for="Activity!.Date"><input type="submit"value="Añadir">
+        </form>
+    </div>
+@*<div class="row">
+  <p>Ingrese los datos del nuevo proveedor:</p>
+  <form method="post">
+    <div class="form-group">
+      <label for="CompanyName">Nombre de la compañía:</label>
+      <input type="text" asp-for="">
+    </div>
+    <div class="form-group">
+      <label for="ContactName">Nombre de contacto:</label>
+      <input type="text" asp-for="">
+    </div>
+    <div class="form-group">
+      <label for="ContactTitle">Direccion:</label>
+      <input type="text" asp-for="">
+    </div>
+    <input type="Submit" value="Crear">
+  </form>
+</div>  *@
