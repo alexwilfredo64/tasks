@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TasksWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93ce929fe0e42addb768a4c760d298e744b48e60")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f63086e90b2bcc8c691749a67018d2fe577b85c")]
 [assembly: System.Reflection.AssemblyProductAttribute("TasksWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TasksWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
