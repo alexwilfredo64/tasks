@@ -9,35 +9,35 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TasksWebApp
 build_property.RootNamespace = TasksWebApp
-build_property.ProjectDir = C:\Users\Alex\desktop\proyectoRama\tasks\TasksWebApp\
+build_property.ProjectDir = C:\Users\Alex\Desktop\proyecto1\tasks\TasksWebApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Alex\desktop\proyectoRama\tasks\TasksWebApp
+build_property.MSBuildProjectDirectory = C:\Users\Alex\Desktop\proyecto1\tasks\TasksWebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Alex/desktop/proyectoRama/tasks/TasksWebApp/Pages/Activities.cshtml]
+[C:/Users/Alex/Desktop/proyecto1/tasks/TasksWebApp/Pages/Activities.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWN0aXZpdGllcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Alex/desktop/proyectoRama/tasks/TasksWebApp/Pages/ActivityDetails.cshtml]
+[C:/Users/Alex/Desktop/proyecto1/tasks/TasksWebApp/Pages/ActivityDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWN0aXZpdHlEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Alex/desktop/proyectoRama/tasks/TasksWebApp/Pages/index.cshtml]
+[C:/Users/Alex/Desktop/proyecto1/tasks/TasksWebApp/Pages/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Alex/desktop/proyectoRama/tasks/TasksWebApp/Pages/Shared/_Layout.cshtml]
+[C:/Users/Alex/Desktop/proyecto1/tasks/TasksWebApp/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Alex/desktop/proyectoRama/tasks/TasksWebApp/Pages/TasksActivity.cshtml]
+[C:/Users/Alex/Desktop/proyecto1/tasks/TasksWebApp/Pages/TasksActivity.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza3NBY3Rpdml0eS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Alex/desktop/proyectoRama/tasks/TasksWebApp/Pages/_ViewStart.cshtml]
+[C:/Users/Alex/Desktop/proyecto1/tasks/TasksWebApp/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

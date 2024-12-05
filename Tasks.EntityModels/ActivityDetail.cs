@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Tasks.EntityModels;
 
-[PrimaryKey( "PersonID", "TaskID")]
+[PrimaryKey( "ActivityID", "PersonID", "TaskID")]
 [Table("ActivityDetails")]
 [Index("TaskID", Name = "TaskID")]
 [Index("TaskID", Name = "TasksActivityDetails")]
@@ -15,15 +15,12 @@ namespace Tasks.EntityModels;
 [Index("Index", Name = "orderIndex")]
 public class ActivityDetail
 {
-    [Key]
     [Column("TaskID", TypeName = "integer")]
     public int TaskID { set; get; }
 
-    [Key]
     [Column("PersonID", TypeName = "integer")]
     public int? PersonID { set; get; }
     
-    [Key]
     [Column("ActivityID", TypeName = "integer")]
     public int ActivityID { set; get; }
 

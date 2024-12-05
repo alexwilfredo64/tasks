@@ -112,8 +112,3 @@ public class ActivityDetailsModel : PageModel
 
 
 
-//public IActionResult OnPostFilterDate()
-//{
-//    //ActivityDetails = _db.ActivityDetails.Where(a => a.A < fecha).OrderByDescending(a => a.Date);
-//    return Page();
-//}
