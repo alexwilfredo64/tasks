@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CLj1kN8tOkCD5665qwo26xAFcRK2aEwz9NBzmoJTvTA=",
+  "Hash": "SF6DCSi25TpdS0jWl895sQkEy6HhJ7XymRT5MpytX68=",
   "Source": "TasksWebApp",
   "BasePath": "_content/TasksWebApp",
   "Mode": "Default",
@@ -10,17 +10,36 @@
     {
       "Name": "TasksWebApp\\wwwroot",
       "Source": "TasksWebApp",
-      "ContentRoot": "C:\\Users\\Alex\\Desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\",
       "BasePath": "_content/TasksWebApp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Alex\\Desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\styles\\style.css",
+      "Identity": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\styles\\persons.css",
       "SourceId": "TasksWebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alex\\Desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\",
+      "BasePath": "_content/TasksWebApp",
+      "RelativePath": "styles/persons.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\styles\\persons.css"
+    },
+    {
+      "Identity": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\styles\\style.css",
+      "SourceId": "TasksWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\",
       "BasePath": "_content/TasksWebApp",
       "RelativePath": "styles/style.css",
       "AssetKind": "All",
