@@ -1,0 +1,189 @@
+@page
+@using Tasks.EntityModels
+
+@model Tasks.Web.Pages.ActivityDetailsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@section navStyle {
+  <style>
+    td {
+      height: 20px;
+    }
+
+    table {
+      height: 100%;
+    }
+
+    .row {
+      float: left;
+      width: 700px;
+      height: 500px;
+      max-height: 400px;
+      overflow: auto;
+
+
+      max-width: 800px;
+      margin: 0 auto;
+      margin-top: 200px;
+      margin-left: 5%;
+      border: 3px solid black;
+      /*margin-right: 0px;*/
+
+    }
+
+    .fecha {
+      margin-top: 500px;
+      float: right;
+      width: 100%;
+      max-width: 144px;
+      border: 3px solid black;
+      margin-top: 200px;
+      margin-left: 0%;
+
+
+    }
+
+    .container {
+
+      max-width: 1000px;
+      margin: 0 auto;
+      margin-left: 10%;
+    }
+
+    .añadir {
+      float: left;
+      margin-left: 20%;
+      margin-top: 50px;
+      width: 100%;
+
+
+
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .navActivity {
+      background-color: rgb(78, 159, 159);
+    }
+  </style>
+}
+<div class="container">
+
+  <div class="row">
+
+    <table class="table">
+      <thead class="thead-inverse" style="position: sticky; top: 0">
+        <tr>
+
+          <th colspan="4" style="border: none;">
+            <h1>Tareas</h1>
+          </th>
+        </tr>
+        <tr>
+          <th>Eliminar</th>
+          <th>Orden</th>
+          <th>Tarea</th>
+          <th>Responsable</th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <div class="activities">
+
+          @if (Model.ActivityDetails is not null)
+          {
+            @foreach (ActivityDetail a in Model.ActivityDetails)
+            {
+
+              <tr>
+                <td>
+                  <form method="post" asp-page-handler="Delete" asp-route-index="@a.Index" >
+                    <input type="submit" value="eliminar">
+                  </form>
+                </td>
+                <td>@a.Index</td>
+                <td>@a.Task.TaskName</td>
+                @if (a.PersonID.HasValue)
+                {
+                  <td>@a.Person.FullName</td>
+                }
+                else
+                {
+                  <td></td>
+                }
+
+              </tr>
+            }
+          }
+        </div>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="fecha">
+    <form method="post" asp-page-handler="Add">
+    <label for="searchBox">Buscar Tarea:</label>
+    <input type="text" id="searchBox" name="searchBox" value="@Model.SearchBox" onkeyup="showSuggestions(this.value)"
+      autocomplete="off" /><button type="submit">Añadir</button>
+
+    <!-- Contenedor para mostrar las sugerencias -->
+    <div id="suggestions" style="border: 1px solid #ccc; max-width: 300px; display: none;">
+      <!-- Las sugerencias se inyectarán aquí con JavaScript -->
+    </div>
+    @*
+   
+  *@</form>
+  </div>
+</div>
+
+@*<div class="añadir">
+  <form method="post" asp-page-handler="Add">
+    <input type="text" asp-for="Activity!.ActivityName"><input type="date" asp-for="Activity!.Date"
+      value="dd/mm/aaaa"><input type="submit" value="Añadir">
+  </form>
+</div>*@
+<script>
+  // Lista de sugerencias para autocompletar
+  var suggestions = @Html.Raw(Json.Serialize(Model.Suggestions));
+
+  // Función para mostrar las sugerencias
+  function showSuggestions(query) {
+    var suggestionBox = document.getElementById("suggestions");
+    suggestionBox.innerHTML = ""; // Limpiar sugerencias previas
+
+    // Solo mostrar sugerencias si la consulta tiene más de 1 carácter
+    if (query.length > 0) {
+      var filteredSuggestions = suggestions.filter(function (item) {
+        return item.toLowerCase().includes(query.toLowerCase());
+      });
+
+      // Si hay sugerencias, mostrar el contenedor
+      if (filteredSuggestions.length > 0) {
+        suggestionBox.style.display = "block";
+
+        // Crear un item de sugerencia para cada coincidencia
+        filteredSuggestions.forEach(function (suggestion) {
+          var suggestionItem = document.createElement("div");
+          suggestionItem.textContent = suggestion;
+          suggestionItem.style.padding = "8px";
+          suggestionItem.style.cursor = "pointer";
+          suggestionItem.onclick = function () {
+            document.getElementById("searchBox").value = suggestion;
+            suggestionBox.innerHTML = "";
+            suggestionBox.style.display = "none";
+          };
+          suggestionBox.appendChild(suggestionItem);
+        });
+      } else {
+        suggestionBox.style.display = "none";
+      }
+    } else {
+      suggestionBox.style.display = "none";
+    }
+  }
+</script>

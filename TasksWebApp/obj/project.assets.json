@@ -1228,11 +1228,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\TasksWebApp\\TasksWebApp.csproj",
+      "projectUniqueName": "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\TasksWebApp\\TasksWebApp.csproj",
       "projectName": "TasksWebApp",
-      "projectPath": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\TasksWebApp\\TasksWebApp.csproj",
+      "projectPath": "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\TasksWebApp\\TasksWebApp.csproj",
       "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\TasksWebApp\\obj\\",
+      "outputPath": "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\TasksWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1247,8 +1247,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\Tasks.DataContext\\Tasks.DataContext.csproj": {
-              "projectPath": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\Tasks.DataContext\\Tasks.DataContext.csproj"
+            "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\Tasks.DataContext\\Tasks.DataContext.csproj": {
+              "projectPath": "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\Tasks.DataContext\\Tasks.DataContext.csproj"
             }
           }
         }

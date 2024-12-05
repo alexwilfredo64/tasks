@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj": {}
+    "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj": {
+    "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj",
         "projectName": "Tasks.EntityModels",
-        "projectPath": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj",
+        "projectPath": "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\Tasks.EntityModels\\obj\\",
+        "outputPath": "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\Tasks.EntityModels\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config"

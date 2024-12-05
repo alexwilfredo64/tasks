@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0Wx9BFqbRBo=",
+  "dgSpecHash": "dIxnYq7bG+8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alex\\desktop\\poyectopoo\\tasks\\tasks\\TasksWebApp\\TasksWebApp.csproj",
+  "projectFilePath": "C:\\Users\\Alex\\desktop\\proyectoRama\\tasks\\TasksWebApp\\TasksWebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.7\\microsoft.data.sqlite.core.8.0.7.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.7\\microsoft.entityframeworkcore.8.0.7.nupkg.sha512",
