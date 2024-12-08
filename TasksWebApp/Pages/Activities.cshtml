@@ -67,7 +67,7 @@
         Model.fecha.ToString("yyyy-MM-dd");
       }
     }
-    <form method="POST" asp-page-handler="FilterDate">
+    <form method="POST"  asp-page-handler="FilterDate" >
       <div class="form-group mb-2">
         <input class="form-control" type="date" id="fecha" name="fecha" onchange="this.form.submit()" value="@fecha"
           required>
@@ -81,19 +81,34 @@
 
 </div>
 <div class="añadir bg-light border border-1 bg-light">
-    <form method="post" class="" asp-page-handler="Add">
+    <form method="post"  asp-page-handler="Add" class="needs-validation" novalidate>
       <div class="form-group mb-2 mx-auto">
         <label for="new">Nueva Actividad:</label>
         <input type="text" class="form-control " asp-for="Activity!.ActivityName" id="new">
+         <div class="invalid-feedback">
+                    Ingrese nombre de actividad
+                </div>
       </div>
       <div class="form-group mb-2 mx-auto">
         <input type="date" class="form-control" asp-for="Activity!.Date" value="dd/mm/aaaa">
+         <div class="invalid-feedback">
+                    Ingrese fecha
+                </div>
       </div>
       <div class="d-grid gap-2 col-6 mx-auto my-3">
         <input type="submit" class="btn btn-lg btn-success" value="Añadir">
       </div>
     </form>
+
+     @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
+            alert('@TempData["ErrorMessage"]');
+        </script>
+    }
   </div>
+
+
 
 
   
@@ -134,4 +149,6 @@
     hiddenInput.value = id; // Asigna el valor dinámico
 
   });
+  
+ 
 </script>

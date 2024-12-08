@@ -10,9 +10,18 @@
 }
 
 <<div class="container">
-  <div class="row border border-1 bg-light">
+ 
+
+  <div class="row1 border border-1 bg-light">
     <table class="table table-striped table-bordered table-hover" id="DetailsTable">
       <thead class="table-light position-sticky top-0">
+        <tr style="position: sticky; top: 0%;de:none">
+
+      <th colspan="5">
+
+      <h2>Actividad:  @Model.activity.ActivityName   @Model.activity.Date.ToString("dd/MM/yyyy")</h2>
+      </th>
+        </tr>
         <tr style="position: sticky; top: 0">
           <th class="del-col"></th>
           <th class="date-col">Tarea</th>
@@ -112,6 +121,13 @@
         <input type="submit" class="btn btn-lg btn-success" value="Asignar Responsables">
       </div>
     </form>
+
+     @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
+            alert('@TempData["ErrorMessage"]');
+        </script>
+    }
   </div>
 <script>
   // Lista de sugerencias para autocompletar
@@ -211,5 +227,7 @@ function drop(event) {
         // Verifica si la respuesta es exitosa
       
 }
+
+
 
 </script>

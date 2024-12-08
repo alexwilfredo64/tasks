@@ -27,6 +27,8 @@ public class ActivityDetailsModel : PageModel
     public ActivityDetail ActivityDetail { get; set; } = new();
     public EntityModels.Task task { get; set; } = new();
 
+    public Activity activity{ get; set; }
+
 
 
     [BindProperty]
@@ -62,6 +64,9 @@ public class ActivityDetailsModel : PageModel
 
     public void OnGet(int id)
     {
+         activity=_db.Activities.First(a => a.ActivityID == id);
+         ViewData["title"] = $"ActivityDetails/{activity.ActivityName}";
+
 
         ActivityDetailsByID(id);
         UsedTasks();
@@ -129,7 +134,10 @@ public class ActivityDetailsModel : PageModel
                 _db.SaveChanges();
 
                 return RedirectToPage("/ActivityDetails", new { id = Id });
-            }
+            }else {
+            TempData["ErrorMessage"] = "Verifique los datos del formulario";
+            return RedirectToPage("/ActivityDetails", new { id = Id });
+        }
 
         }
         return BadRequest();
@@ -183,8 +191,7 @@ public class ActivityDetailsModel : PageModel
         {
             
             do
-            {
-                
+            { 
                int randomIndex = random.Next(n);
                Person = _db.Persons.Skip(randomIndex) .FirstOrDefault(); 
             } while (unavailablePerson.Contains(Person.PersonID) || !permitted(a,Person));

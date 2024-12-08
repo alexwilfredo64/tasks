@@ -61,8 +61,11 @@ public void OnPost(){
         _db.Activities.Add(Activity);
         _db.SaveChanges();
         return RedirectToPage("/Activities");
+        }else {
+            TempData["ErrorMessage"] = "Verifique los datos del formulario";
+            return RedirectToPage("/Activities");
         }
-         return BadRequest ();
+         
 
     }
     public IActionResult OnPostFilterDate()
