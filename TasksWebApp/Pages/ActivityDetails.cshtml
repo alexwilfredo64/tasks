@@ -1,0 +1,233 @@
+@page
+@using Tasks.EntityModels
+
+@model Tasks.Web.Pages.ActivityDetailsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@section extraStyles {
+ 
+    <link rel="stylesheet" href="./styles/Activities.css">
+
+}
+
+<<div class="container">
+ 
+
+  <div class="row1 border border-1 bg-light">
+    <table class="table table-striped table-bordered table-hover" id="DetailsTable">
+      <thead class="table-light position-sticky top-0">
+        <tr style="position: sticky; top: 0%;de:none">
+
+      <th colspan="5">
+
+      <h2>Actividad:  @Model.activity.ActivityName   @Model.activity.Date.ToString("dd/MM/yyyy")</h2>
+      </th>
+        </tr>
+        <tr style="position: sticky; top: 0">
+          <th class="del-col"></th>
+          <th class="date-col">Tarea</th>
+          <th class="activity-col">Responsable</th>
+          <th></th>
+          <th class="details-col"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <div class="activities">
+
+          @if (Model.ActivityDetails is not null)
+          {
+            @foreach (ActivityDetail a in Model.ActivityDetails)
+            {
+
+              <tr draggable="true" data-id="@a.TaskID" ondragstart="start(event)" ondragover="dragover(event)" ondrop="drop(event)">
+                <td>
+                  <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete"
+                    data-index="@a.Index">
+                    &times;
+                  </button>
+                </td>
+                <td>@a.Task.TaskName</td>
+                @if (a.PersonID.HasValue)
+                {
+                  <td>@a.Person.FullName</td>
+                }
+                else
+                {
+                  <td></td>
+                }
+                <td></td>
+
+                <td class="index" style="">@a.Index</td>
+              </tr>
+            }
+          }
+        </div>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="añadirta">
+    <form method="post" asp-page-handler="Add">
+      
+        
+    <label for="searchBox">Buscar Tarea:</label>
+    <div class="input-group">
+      
+    <input type="text" id="searchBox" class="form-control" name="searchBox" value="@Model.SearchBox" onkeyup="showSuggestions(this.value)"autocomplete="off" />
+    <span class="input-group-btn">
+      <input type="submit"style="float:right" class="btn btn-lg btn-success" value="Añadir">
+    </span>
+    </div>
+      
+    </form>
+
+    <!-- Contenedor para mostrar las sugerencias -->
+    <div id="suggestions" style="border: 1px solid #ccc; max-width: 190px; display: none;">
+      <!-- Las sugerencias se inyectarán aquí con JavaScript -->
+    </div>
+  </div>
+  
+</div>
+
+<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="modalDeleteConfirmation" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Confirmación</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="post" asp-page-handler="Delete" >
+        <div class="modal-body">¿Desea eliminar este elemento?
+
+          <input type="hidden" id="index" name="index" value="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-danger">
+            Aceptar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="añadir ">
+    <form method="post" class="" asp-page-handler="AssignResponsibler">
+      <div class="d-grid gap-2 col-6 mx-auto my-3">
+        <input type="submit" class="btn btn-lg btn-success" value="Asignar Responsables">
+      </div>
+    </form>
+
+     @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
+            alert('@TempData["ErrorMessage"]');
+        </script>
+    }
+  </div>
+<script>
+  // Lista de sugerencias para autocompletar
+  var suggestions = @Html.Raw(Json.Serialize(Model.Suggestions));
+
+  // Función para mostrar las sugerencias
+  function showSuggestions(query) {
+    var suggestionBox = document.getElementById("suggestions");
+    suggestionBox.innerHTML = ""; // Limpiar sugerencias previas
+
+    // Solo mostrar sugerencias si la consulta tiene más de 1 carácter
+    if (query.length > 0) {
+      var filteredSuggestions = suggestions.filter(function (item) {
+        return item.toLowerCase().includes(query.toLowerCase());
+      });
+
+      // Si hay sugerencias, mostrar el contenedor
+      if (filteredSuggestions.length > 0) {
+        suggestionBox.style.display = "block";
+
+        // Crear un item de sugerencia para cada coincidencia
+        filteredSuggestions.forEach(function (suggestion) {
+          var suggestionItem = document.createElement("div");
+          suggestionItem.textContent = suggestion;
+          suggestionItem.style.padding = "8px";
+          suggestionItem.style.cursor = "pointer";
+          suggestionItem.onclick = function () {
+            document.getElementById("searchBox").value = suggestion;
+            suggestionBox.innerHTML = "";
+            suggestionBox.style.display = "none";
+          };
+          suggestionBox.appendChild(suggestionItem);
+        });
+      } else {
+        suggestionBox.style.display = "none";
+      }
+    } else {
+      suggestionBox.style.display = "none";
+    }
+  }
+</script>
+
+<script>
+  var deleteModal = document.getElementById('delete');
+  deleteModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget; // Botón que activó el modal
+    var id = button.getAttribute('data-index'); // Obtén el ID del botón
+    var hiddenInput = document.getElementById('index'); // Encuentra el campo oculto
+    hiddenInput.value = id; // Asigna el valor dinámico
+
+  });
+</script>
+
+
+<script>
+  let row;
+
+function start(event) {
+    row = event.target; // Guardamos la fila que se arrastra
+}
+
+function dragover(event) {
+    event.preventDefault();
+    const children = Array.from(event.target.parentNode.parentNode.children);
+
+    if (children.indexOf(event.target.parentNode) > children.indexOf(row)) {
+        event.target.parentNode.after(row);
+    } else {
+        event.target.parentNode.before(row);
+    }
+}
+
+function drop(event) {
+    // Cuando se suelta la fila, actualizamos el orden automáticamente
+    updateOrder();
+}
+
+ async function updateOrder() {
+    const rows = document.querySelectorAll("#DetailsTable tbody tr");
+    const order = Array.from(rows).map(row => row.dataset.id); 
+    
+   
+    rows.forEach((row, index) => {
+        row.querySelector('.index').textContent = index + 1; // Actualiza el número visual
+    });
+   
+        // Realiza la solicitud POST
+     fetch('/ActivityDetails?handler=UpdateOrder', {
+            method: 'POST',
+            headers: {
+              'RequestVerificationToken': document.getElementsByName("__RequestVerificationToken")[0].value,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(order),
+        });
+
+        // Verifica si la respuesta es exitosa
+      
+}
+
+
+
+</script>

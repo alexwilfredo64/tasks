@@ -24,7 +24,7 @@ public class Activity
 
     [Column("Description", TypeName = "nvarchar (100)")]
     [StringLength(100)]
-    public string Description { set; get; } = null!;
+    public string? Description { set; get; } = null!;
 
     [InverseProperty("Activity")]
     public virtual ICollection<ActivityDetail> ActivityDetails { set; get; } = new List<ActivityDetail>();
