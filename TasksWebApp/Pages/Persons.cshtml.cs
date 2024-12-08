@@ -37,7 +37,8 @@ public class PersonsModel : PageModel
             _db.SaveChanges();
             return RedirectToPage("/Persons");
         } else {
-            return BadRequest();
+            TempData["AddPersonError"] = "Verifique los datos del formulario";
+            return Page();
         }
     }
 
@@ -52,24 +53,31 @@ public class PersonsModel : PageModel
 
     public IActionResult OnPostAvailTasks([FromBody] RequestData Data)
     {
-        if(!int.TryParse(Data.data[0], out int TaskId)){
+        if(!int.TryParse(Data.data[0], out int PersonId)){
             WriteLine("[ERROR]: No se pudo convetir '{1}' a int", Data.data[0]);
             return new JsonResult( new {success = false, data = ""} );
         }
 
-        IEnumerable<TaskException> UsedTasks = _db.TaskExceptions.Where(te => te.PersonID == TaskId);
+        IEnumerable<TaskException> UsedTasks = _db.TaskExceptions.Where(te => te.PersonID == PersonId).Include(te => te.Task).OrderBy(te => te.Task.TaskName);
 
         List<int> UsedTasksIds = new();
 
-        foreach(TaskException te in UsedTasks){ UsedTasksIds.Add(te.TaskID); }
+        List<Object>[] nameIdPairs = new List<object>[2];
+
+         nameIdPairs[0] = new();
+         nameIdPairs[1] = new();
+
+         foreach( var te in UsedTasks)
+         {
+            nameIdPairs[1].Add(new { name = te.Task , id = te.TaskID });
+            UsedTasksIds.Add(te.TaskID);
+         }
 
         IEnumerable<Tasks.EntityModels.Task> AvailTasks = _db.Tasks.Where(t => !UsedTasksIds.Contains(t.TaskID)).OrderBy(t => t.TaskName);
 
-         List<Object> nameIdPairs = new();
-
          foreach(var t in AvailTasks)
          {
-            nameIdPairs.Add(new { name = t.TaskName, id = t.TaskID});
+            nameIdPairs[0].Add(new { name = t.TaskName, id = t.TaskID});
          }
 
          return new JsonResult( new { success = true, data = nameIdPairs });
@@ -85,6 +93,16 @@ public class PersonsModel : PageModel
         };
 
         _db.TaskExceptions.Add(te);
+        _db.SaveChanges();
+        
+        return RedirectToPage("/Persons");
+    }
+
+    public IActionResult OnPostDeleteException(int PersonID, int TaskID)
+    {
+        TaskException te = _db.TaskExceptions.Single(te => te.PersonID == PersonID && te.TaskID == TaskID);
+        
+        _db.TaskExceptions.Remove(te);
         _db.SaveChanges();
         
         return RedirectToPage("/Persons");

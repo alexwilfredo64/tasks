@@ -1,3 +1,35 @@
+(function () {
+  let forms = document.querySelectorAll('.needs-validation')
+
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+
+  var tab = document.getElementById("tab-mod-task")
+  tab.addEventListener("show.bs.tab", function(event){
+  let submitBtn = document.getElementById("submit-exception");
+    if(event.target.id === "nav-add-tab") {
+      submitBtn.setAttribute("asp-page-handler", "AddException")
+      submitBtn.dataset.color = "success"
+      submitBtn.textContent = "Agregar"
+    } else {
+      submitBtn.setAttribute("asp-page-handler", "DeleteException")
+      submitBtn.dataset.color = "danger"
+      submitBtn.textContent = "Eliminar"
+    }
+
+    submitBtn.setAttribute("class", "btn btn-lg btn-outline-" + submitBtn.dataset.color);
+  })
+})()
+
 function setDeleteModalData(button) {
     let divDel = document.getElementById("modal-delete-body");
     divDel.textContent = `¿Desea eliminar a ${button.dataset.name} de la base de datos?`;
@@ -6,25 +38,28 @@ function setDeleteModalData(button) {
 }
 
 function setAddTaskExceptData(button) {
-    let textInput = document.getElementById("text-filter-task");
-
     let submitBtn = document.getElementById("submit-exception");
-    let inputTaskID = document.getElementById("add-except-task-id")
-    let inputPersonID = document.getElementById("add-except-person-id")
-
+    let inputTaskID = document.getElementById("except-task-id");
+    let inputPersonID = document.getElementById("except-person-id");
+  
     inputTaskID.setAttribute("value", "none");
-    submitBtn.setAttribute("class", "btn btn-lg btn-outline-success");
+    submitBtn.setAttribute("class", "btn btn-lg btn-outline-" + submitBtn.dataset.color);
     submitBtn.setAttribute("disabled", "true");
     
     let id = button.dataset.id;
     inputPersonID.setAttribute("value", id)
-
-    let dbox = document.getElementById("task-dropbox-menu");
-
-    Array.from(dbox.children).forEach( child => {
-        dbox.removeChild(child)
+  
+    let dboxAdd = document.getElementById("task-dropbox-menu-add");
+    let dboxDelete = document.getElementById("task-dropbox-menu-delete");
+    
+    if(dboxAdd.children !== null)
+    Array.from(dboxAdd.children).forEach( child => {
+        dboxAdd.removeChild(child)
     })
-
+    Array.from(dboxDelete.children).forEach( child => {
+        dboxDelete.removeChild(child)
+    })
+  
     //petición a servidor 
     //-------------------v Handler (como asp-page-handler)
     fetch("/Persons/AvailTasks", {
@@ -38,43 +73,69 @@ function setAddTaskExceptData(button) {
     .then(response => response.json())
     .then(r => {
         if(r.success){
-            r.data.forEach( task => {
-                let li = document.createElement("li");
-                let button = document.createElement("button");
-                button.textContent = task.name;
-                button.setAttribute("class", "dropdown-item");
-                button.setAttribute("type", "button");
-                button.dataset.id = task.id;
-                
-                button.onclick = function () {
-                    let textInput = document.getElementById("text-filter-task");
-                    textInput.value = this.textContent
-                    let submit = document.getElementById("submit-exception");
-                    submit.setAttribute("class", "btn btn-lg btn-success");
-                    submit.removeAttribute("disabled");
 
-                    let inputTaskId = document.getElementById("add-except-task-id")
-                    inputTaskId.setAttribute("value", this.dataset.id);
-                };
+          r.data[0].forEach( task => {
+              let li = document.createElement("li");
+              let button = document.createElement("button");
+              button.textContent = task.name;
+              button.setAttribute("class", "dropdown-item");
+              button.setAttribute("type", "button");
+              button.dataset.id = task.id;
+              
+              button.onclick = function () {
+                  let textInput = document.getElementById("text-filter-task");
+                  textInput.value = this.textContent
+                  let submit = document.getElementById("submit-exception");
+                  submit.setAttribute("class", "btn btn-lg btn-success");
+                  submit.removeAttribute("disabled");
 
-                li.appendChild(button);
-                dbox.appendChild(li)
-            })
+                  let inputTaskId = document.getElementById("except-task-id")
+                  inputTaskId.setAttribute("value", this.dataset.id);
+              };
+
+              li.appendChild(button);
+              dboxAdd.appendChild(li)
+          })
+
+          r.data[1].forEach( task => {
+            let li = document.createElement("li");
+            let button = document.createElement("button");
+            button.textContent = task.name;
+            button.setAttribute("class", "dropdown-item");
+            button.setAttribute("type", "button");
+            button.dataset.id = task.id;
+            
+            button.onclick = function () {
+                let textInput = document.getElementById("text-filter-task");
+                textInput.value = this.textContent
+                let submit = document.getElementById("submit-exception");
+                submit.setAttribute("class", "btn btn-lg btn-danger");
+                submit.removeAttribute("disabled");
+
+                let inputTaskId = document.getElementById("except-task-id")
+                inputTaskId.setAttribute("value", this.dataset.id);
+            };
+
+            li.appendChild(button);
+            dboxDelete.appendChild(li)
+          })
+
         }
     })
-}
+  }
 
 //función para listar tareas disponibles
 function displayAvailTasks(textInput){
 
     let submitBtn = document.getElementById("submit-exception");
-    let inputTaskID = document.getElementById("add-except-task-id")
+    let inputTaskID = document.getElementById("except-task-id")
     inputTaskID.setAttribute("value", "none")
-    submitBtn.setAttribute("class", "btn btn-lg btn-outline-success");
+    submitBtn.setAttribute("class", "btn btn-lg btn-outline-" + submitBtn.dataset.color);
     submitBtn.setAttribute("disabled", "true");
 
-    let dbox = document.getElementById("task-dropbox-menu");
-    let dboxOptions = dbox.children
+    let isAddTabSelected = submitBtn.dataset.color === "success";
+    let dbox = isAddTabSelected ? document.getElementById("task-dropbox-menu-add") : document.getElementById("task-dropbox-menu-delete");
+    let dboxOptions =  dbox.children;
     let dboxDiv = document.getElementById("dropdown-div");
     let filter = textInput.value.trim().toLowerCase();
 
@@ -90,27 +151,22 @@ function displayAvailTasks(textInput){
     if (dbox.style.display == "none")
         triggerButton.click();
 
-    Array.from(dboxOptions).forEach( task => {
-        
-        task.style.display = ((task.textContent.toLowerCase().includes(filter))) ?
-            "block" : "none"
-    })
-}
+    let countShown = 0;
 
-(function () {
-    'use strict'
-  
-    var forms = document.querySelectorAll('.needs-validation')
-  
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-  
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()
+    Array.from(dboxOptions).forEach( task => {
+      let display;
+        if(task.textContent.toLowerCase().includes(filter)) {
+          display = "block";
+          countShown++;
+        } else {
+          display = "none";
+        }
+        task.style.display = display;
+    })
+    
+    if(!countShown) {
+      let li = document.createElement("li");
+      li.innerHTML=`<span class="dropdown-item-text">No hay tareas para ${isAddTabSelected ? "agregar" : "eliminar"}</span>`
+      dbox.appendChild(li) 
+    }
+}
