@@ -26,15 +26,24 @@
                     {
                         <tr>
 
-                            <td><button
+                            <td>
+                            @if( p.ActivityDetails is not null && p.ActivityDetails.Count > 0) {
+                                <button
+                                    type="button"
+                                    class="btn btn-sm btn-outline-danger"> &times;
+                                </button>
+                            } else {
+                                <button
                                     type="button"
                                     data-id="@p.PersonID"
                                     data-name="@p.FullName"
-                                    class="btn btn-sm btn-danger"
                                     data-bs-toggle="modal" 
                                     data-bs-target="#modalDeleteConfirmation"
+                                    class="btn btn-sm btn-danger"
                                     onclick="setDeleteModalData(this)"> &times;
                                 </button>
+                            }
+                                
                             </td>
                             <td>@p.FullName</td>
                             <td>@Model.getPersonExceptionTasksNames(p.PersonID)</td>
@@ -58,7 +67,7 @@
         </table>
     </div>
     <div class="form container bg-light border border-1 bg-light">
-        <form method="post">
+        <form method="post" class="needs-validation" novalidate>
             <div class="form-group mb-2">
                 <label for="FirstName">Nombre:</label>
                 <input type="text" class="form-control" asp-for="Person!.FirstName" id="FirstName" required>
