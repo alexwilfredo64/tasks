@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Tasks.EntityModels;
 
-[PrimaryKey( "ActivityID", "PersonID", "TaskID")]
+[PrimaryKey( "ActivityID", "TaskID")]
 [Table("ActivityDetails")]
 [Index("TaskID", Name = "TaskID")]
 [Index("TaskID", Name = "TasksActivityDetails")]
