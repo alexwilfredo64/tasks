@@ -4,83 +4,9 @@
 @model Tasks.Web.Pages.ActivitiesModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @section extraStyles {
-  <style>
-    .navActivity { 
-    background-color: rgb(78, 159, 159); 
-    cursor: default;
-} 
-    table {
-      height: 100%;
-    }
+ 
+    <link rel="stylesheet" href="./styles/Activities.css">
 
-
-    .row {
-      float: :left;
-      align-self: flex-start;
-      width: max(60%, 550px);
-      float: left;
-      max-height: 300px;
-      overflow: auto;
-
-
-
-
-    }
-
-    .fecha {
-      float: right;
-      align-self: flex-start;
-      width: 20%;
-      margin-right: 10%;
-      height: fit-content;
-    }
-
-    .container {
-      position: sticky;
-     height: 300px;
-      margin-top: 150px;
-    }
-
-    .mt-100 {
-      margin-top: 100%;
-    }
-
-    .añadir {
-      padding: 5px;
-      margin-left: 25%;
-      position: sticky;
-      margin-top: 25px;
-      height: fit-content;
-    align-self: flex-start;
-    width: 250px;
-     height: 200px;
-      float: left ;
-      
-
-
-    }
-
-    .del-col {
-      width: 62.8px;
-    }
-
-    .date-col {
-      width: 45%;
-    }
-
-    .activity-col {
-      width: 50%;
-    }
-
-    .datails-col {
-      width: 50px;
-    }
-
-    .form {
-      width: 35%;
-      height: fit-content;
-    }
-  </style>
 }
 <div class="container">
   <div class="row border border-1 bg-light">
@@ -118,9 +44,11 @@
                 </td>
                 <td>@date</td>
                 <td>@a.ActivityName</td>
-                <td><button type="button" class="btn btn-lg btn-sm btn-success">
+                <td>
+                  <form method="post"asp-page="/ActivityDetails" asp-page-handler="Details"  asp-route-ActivityId="@a.ActivityID"><button type="submit" class="btn btn-lg btn-sm btn-success">
                     detalles
-                  </button></td>
+                  </button></form>
+                  </td>
               </tr>
             }
           }

@@ -1,11 +1,11 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\styles\\persons.css",
-      "PackagePath": "staticwebassets\\styles\\persons.css"
+      "Id": "C:\\Users\\Alex\\Desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\styles\\Activities.css",
+      "PackagePath": "staticwebassets\\styles\\Activities.css"
     },
     {
-      "Id": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\styles\\style.css",
+      "Id": "C:\\Users\\Alex\\Desktop\\proyecto1\\tasks\\TasksWebApp\\wwwroot\\styles\\style.css",
       "PackagePath": "staticwebassets\\styles\\style.css"
     },
     {

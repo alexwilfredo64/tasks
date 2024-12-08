@@ -2558,11 +2558,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\Tasks.DataContext\\Tasks.DataContext.csproj",
+      "projectUniqueName": "C:\\Users\\Alex\\Desktop\\proyecto1\\tasks\\Tasks.DataContext\\Tasks.DataContext.csproj",
       "projectName": "Tasks.DataContext",
-      "projectPath": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\Tasks.DataContext\\Tasks.DataContext.csproj",
+      "projectPath": "C:\\Users\\Alex\\Desktop\\proyecto1\\tasks\\Tasks.DataContext\\Tasks.DataContext.csproj",
       "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\Tasks.DataContext\\obj\\",
+      "outputPath": "C:\\Users\\Alex\\Desktop\\proyecto1\\tasks\\Tasks.DataContext\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2577,8 +2577,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj": {
-              "projectPath": "C:\\Users\\Alex\\desktop\\proyecto1\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj"
+            "C:\\Users\\Alex\\Desktop\\proyecto1\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj": {
+              "projectPath": "C:\\Users\\Alex\\Desktop\\proyecto1\\tasks\\Tasks.EntityModels\\Tasks.EntityModels.csproj"
             }
           }
         }
