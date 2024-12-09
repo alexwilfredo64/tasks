@@ -47,7 +47,7 @@
                             </td>
                             <td>@p.FullName</td>
                             <td>@Model.getPersonExceptionTasksNames(p.PersonID)</td>
-                            
+                            @Html.AntiForgeryToken()
                             <td class="align-content-center"><button 
                                 type="button"
                                 data-id="@p.PersonID"
@@ -170,8 +170,7 @@
                             <form>
                                 <div class="form-group mb-2">
                                     <label for="Task">Seleccionar Tarea</label>
-                                    
-                                    @Html.AntiForgeryToken()
+                                
                                     <div class="dropdown" id="dropdown-div">
                                         <input 
                                             type="text" 
@@ -193,13 +192,12 @@
                         id="pills-delete"
                         role="tabpanel"
                         aria-labelledby="nav-delete-tab">
-                        <div class="container bg-light border border-1 bg-light" style="width: 300px;"">
+                        <div class="container bg-light border border-1 bg-light" style="width: 300px;">
                             <form >
                             
                                 <div class="form-group mb-2">
                                     <label for="Task">Seleccionar Tarea</label>
-                                    
-                                    @Html.AntiForgeryToken()
+
                                     <div class="dropdown" id="dropdown-div">
                                         <input 
                                             type="text" 
@@ -218,7 +216,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form >
+                <form method="post">
                     <button asp-page-handler="AddException" type="submit" id="submit-exception" data-color="success" class="btn btn-lg btn-outline-success"  data-bs-dismiss="modal" disabled>Agregar</button>
                     <input id="except-task-id" type="hidden" name="TaskID" value="none">
                     <input id="except-person-id" type="hidden" name="PersonID" value="none">

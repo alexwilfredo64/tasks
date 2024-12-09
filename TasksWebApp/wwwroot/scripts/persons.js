@@ -16,11 +16,18 @@
   var tab = document.getElementById("tab-mod-task")
   tab.addEventListener("show.bs.tab", function(event){
   let submitBtn = document.getElementById("submit-exception");
+    
     if(event.target.id === "nav-add-tab") {
-      submitBtn.setAttribute("asp-page-handler", "AddException")
+      submitBtn.setAttribute("formaction","/Persons/AddException");
+      submitBtn.setAttribute("asp-page-handler","AddException")
+      let textInput = document.getElementById("text-filter-task-add");
+      textInput.textContent = "";
       submitBtn.dataset.color = "success"
       submitBtn.textContent = "Agregar"
     } else {
+      submitBtn.setAttribute("formaction","/Persons/DeleteException");
+      textInput = document.getElementById("text-filter-task-delete");
+      textInput.textContent = "";
       submitBtn.setAttribute("asp-page-handler", "DeleteException")
       submitBtn.dataset.color = "danger"
       submitBtn.textContent = "Eliminar"
@@ -41,6 +48,10 @@ function setAddTaskExceptData(button) {
     let submitBtn = document.getElementById("submit-exception");
     let inputTaskID = document.getElementById("except-task-id");
     let inputPersonID = document.getElementById("except-person-id");
+    let textInput = document.getElementById("text-filter-task-add");
+    textInput.textContent = "";
+    textInput = document.getElementById("text-filter-task-delete");
+    textInput.textContent = "";
   
     inputTaskID.setAttribute("value", "none");
     submitBtn.setAttribute("class", "btn btn-lg btn-outline-" + submitBtn.dataset.color);
@@ -83,7 +94,7 @@ function setAddTaskExceptData(button) {
               button.dataset.id = task.id;
               
               button.onclick = function () {
-                  let textInput = document.getElementById("text-filter-task");
+                  let textInput = document.getElementById("text-filter-task-add");
                   textInput.value = this.textContent
                   let submit = document.getElementById("submit-exception");
                   submit.setAttribute("class", "btn btn-lg btn-success");
@@ -106,7 +117,7 @@ function setAddTaskExceptData(button) {
             button.dataset.id = task.id;
             
             button.onclick = function () {
-                let textInput = document.getElementById("text-filter-task");
+                let textInput = document.getElementById("text-filter-task-delete");
                 textInput.value = this.textContent
                 let submit = document.getElementById("submit-exception");
                 submit.setAttribute("class", "btn btn-lg btn-danger");

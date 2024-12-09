@@ -69,7 +69,7 @@ public class PersonsModel : PageModel
 
          foreach( var te in UsedTasks)
          {
-            nameIdPairs[1].Add(new { name = te.Task , id = te.TaskID });
+            nameIdPairs[1].Add(new { name = te.Task.TaskName , id = te.TaskID });
             UsedTasksIds.Add(te.TaskID);
          }
 
@@ -85,6 +85,8 @@ public class PersonsModel : PageModel
 
     public IActionResult OnPostAddException(int PersonID, int TaskID)
     {
+
+        WriteLine("En Add");
              
         TaskException te = new()
         {
@@ -101,9 +103,11 @@ public class PersonsModel : PageModel
     public IActionResult OnPostDeleteException(int PersonID, int TaskID)
     {
         TaskException te = _db.TaskExceptions.Single(te => te.PersonID == PersonID && te.TaskID == TaskID);
-        
+        WriteLine("Antes de borrar");
         _db.TaskExceptions.Remove(te);
+        WriteLine("Despues de borrar");
         _db.SaveChanges();
+        WriteLine("Despues de guardar");
         
         return RedirectToPage("/Persons");
     }

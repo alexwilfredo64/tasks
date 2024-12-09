@@ -6,13 +6,13 @@
 @property --navColor {
     syntax: '<color>';
     inherits: false;
-    initial-value: rgb(142, 210, 210);
+    initial-value: rgb(99, 166, 255);
 }
 
 @property --navColorSelect {
     syntax: '<color>';
     inherits: false;
-    initial-value: rgb(78, 159, 159);
+    initial-value: rgb(81, 130, 194);
 }
 
 :root {
@@ -49,6 +49,6 @@ a[class^="nav"] {
     text-decoration: none;
 }
 
-a[class^="nav"]:hover {
+a[class^="nav"]:hover, #home:hover{
     background-color: var(--navColorSelect);
 }

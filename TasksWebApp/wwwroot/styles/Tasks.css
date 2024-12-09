@@ -1,3 +1,8 @@
+.navTask { 
+  background-color: rgb(81, 130, 194);
+  cursor: default;
+  } 
+
 .mt-100 {
   margin-top: 100px;
 }
